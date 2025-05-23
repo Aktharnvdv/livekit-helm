@@ -14,16 +14,16 @@ livekit:
 
   turn:
     enabled: true
-    domain: "<turn-address>"               # ← e.g. turn.livekit.example.com
+    domain: turn.vocalist.chimelabs.ai
     tls_port: 3478
-    secretName: "<turn-tls-secret>"        # ← name of the K8s TLS Secret for your TURN cert
+    secretName: livekit-turn-tls     # K8s Secret you’ll create for your TURN cert
 
 loadBalancer:
   type: gke
   tls:
     - hosts:
-        - "<server-address>"               # ← e.g. livekit.example.com
-      secretName: "<server-tls-secret>"    # ← name of the K8s TLS Secret or ManagedCertificate
+        - vocalist.chimelabs.ai
+      secretName: livekit-cert        # GKE ManagedCertificate you’ll create
 
 autoscaling:
   enabled: true
